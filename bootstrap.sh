@@ -7,8 +7,6 @@ sudo apt-get update
 
 # Instalo un servidor web
 sudo apt-get install -y apache2 
-rm -rf /var/www
-ln -fs /vagrant /var/www
 
 ### Configuración del entorno ###
 
@@ -35,14 +33,26 @@ sudo apt-get install libapache2-mod-php7.2 php7.2 php7.2-mysql php7.2-sqlite -y
 sudo apt-get install php7.2-mbstring php7.2-curl php7.2-intl php7.2-gd php7.2-zip php7.2-bz2 -y
 sudo apt-get install php7.2-dom php7.2-xml php7.2-soap -y
 
-# Reiniciamos el servidor web:
- 
-sudo /etc/init.d/apache2 restart
- 
-echo "BRUXO84 localhost" | sudo tee /etc/apache2/sites-available/fqdn.conf
- 
-sudo ln -s /etc/apache2/sites-available/fqdn.conf /etc/apache2/sites-enabled/fqdn.conf
- 
-# Reiniciamos nuevamente el servidor web:
- 
-sudo /etc/init.d/apache2 restart
+## configuración servidor web
+#copio el archivo de configuración del repositorio en la configuración del servidor web
+if [ -f "/tmp/devops.site.conf" ]; then
+	echo "Copio el archivo de configuracion de apache";
+	sudo mv /tmp/devops.site.conf /etc/apache2/sites-available
+	#activo el nuevo sitio web
+	sudo a2ensite devops.site.conf
+	#desactivo el default
+	sudo a2dissite 000-default.conf
+	#refresco el servicio del servidor web para que tome la nueva configuración
+	sudo service apache2 reload
+fi
+	
+## aplicación
+
+# descargo la app del repositorio
+if [ ! -d "$APP_PATH" ]; then
+	echo "clono el repositorio";
+	cd $APACHE_ROOT;
+	sudo git clone https://github.com/Fichen/utn-devops-app.git;
+	cd $APP_PATH;
+	sudo git checkout unidad-1;
+fi
