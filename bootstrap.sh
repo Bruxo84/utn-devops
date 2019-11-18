@@ -32,19 +32,6 @@ APP_PATH="$APACHE_ROOT/utn-devops-app";
 sudo apt-get install libapache2-mod-php7.2 php7.2 php7.2-mysql php7.2-sqlite -y
 sudo apt-get install php7.2-mbstring php7.2-curl php7.2-intl php7.2-gd php7.2-zip php7.2-bz2 -y
 sudo apt-get install php7.2-dom php7.2-xml php7.2-soap -y
-
-## configuración servidor web
-#copio el archivo de configuración del repositorio en la configuración del servidor web
-if [ -f "/tmp/devops.site.conf" ]; then
-	echo "Copio el archivo de configuracion de apache";
-	sudo mv /tmp/devops.site.conf /etc/apache2/sites-available
-	#activo el nuevo sitio web
-	sudo a2ensite devops.site.conf
-	#desactivo el default
-	sudo a2dissite 000-default.conf
-	#refresco el servicio del servidor web para que tome la nueva configuración
-	sudo service apache2 reload
-fi
 	
 ## aplicación
 
