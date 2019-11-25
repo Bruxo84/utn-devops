@@ -80,11 +80,11 @@ APP_PATH="$APACHE_ROOT/utn-devops-app";
 
 # Descargo la app del repositorio
 if [ ! -d "$APP_PATH" ]; then
-	echo "clono el repositorio";
-	cd $APACHE_ROOT;
-	sudo git clone https://github.com/Bruxo84/utn-devops-app.git;
-	cd $APP_PATH;
-	sudo git checkout unidad-2;
+	echo "clono el repositorio"
+	cd $APACHE_ROOT
+	sudo git clone https://github.com/Bruxo84/utn-devops-app.git
+	cd $APP_PATH
+	sudo git checkout unidad-2-docker
 fi
 
 ######## Instalacion de DOCKER ########
@@ -114,7 +114,7 @@ if [ ! -x "$(command -v docker)" ]; then
 	#gpg is the gnu pgp encryption program.	
 
 	sudo apt-key add < /tmp/docker_gpg && sudo rm -f /tmp/docker_gpg
-	#se agregar este GPG y luego se borra lo descargado en /tmp
+	#se agregar este GPG y luego se b:orra lo descargado en /tmp
 
 	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 	#Se agrega el repositorio en el sourcelist de un container docker Ubuntu stable
