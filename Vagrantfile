@@ -69,5 +69,16 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provision "shell", path: "bootstrap.sh"
+  #
+  # Con esta sentencia lo que hara Vagrant es copiar el archivo a la máquina Ubuntu.
+  # Además de usarlo como ejemplo para distinguir dos maneras de aprovisionamiento el archivo contiene
+  # una definición del firewall de Ubuntu para permitir el tráfico de red que se redirecciona internamente, configuración
+  # necesaria para Docker. Luego será copiado al lugar correcto por el script Vagrant.bootstrap.sh
+  config.vm.provision "file", source: "hostConfigs/ufw", destination: "/tmp/ufw"
+
+  # Con esta sentencia lo que hara Vagrant es transferir este archivo a la máquina Ubuntu
+  # y ejecutarlo una vez iniciado. En este caso ahora tendrá el aprovisionamiento para la instalación de Docker
+  config.vm.provision :shell, path: "bootstrap.sh"
+
+  #
 end
