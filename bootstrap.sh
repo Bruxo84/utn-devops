@@ -6,12 +6,12 @@
 sudo apt-get update
 
 # Instalo un servidor web (Pratica 1 Expora)
-#sudo apt-get install -y apache2
+sudo apt-get install -y apache2
 ##Desintalo el servidor web instalado previamente en la unidad 1,
 # a partir de ahora va a estar en un contenedor de Docker.
-#if [ -x "$(command -v apache2)" ];then
-#	sudo apt-get remove --purge apache2 -y
-#	sudo apt autoremove -y
+if [ -x "$(command -v apache2)" ];then
+	sudo apt-get remove --purge apache2 -y
+	sudo apt autoremove -y
 fi
 # Directorio para los archivos de la base de datos MySQL. El servidor de la base de datos
 # es instalado mediante una imagen de Docker. Esto está definido en el archivo
