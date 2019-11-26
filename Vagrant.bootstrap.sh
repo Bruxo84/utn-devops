@@ -47,7 +47,7 @@ APP_PATH="$APACHE_ROOT/utn-devops-app/"
 
 # descargo la app del repositorio
 cd $APACHE_ROOT
-sudo git clone https://github.com/Fichen/utn-devops-app.git;
+sudo git clone https://github.com/Bruxo84/utn-devops-app.git;
 cd $APP_PATH;
 sudo git checkout unidad-2;
 
