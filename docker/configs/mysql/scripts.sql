@@ -17,8 +17,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
 -- Table structure for table `categorias`
--- 
-
 CREATE TABLE `categorias` (
   `cod_categoria` int(10) unsigned NOT NULL auto_increment,
   `descripcion` varchar(50) NOT NULL default '',
