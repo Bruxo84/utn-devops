@@ -1,22 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 2.10.3
--- http://www.phpmyadmin.net
--- 
--- Host: localhost
--- Generation Time: Oct 12, 2009 at 09:44 PM
--- Server version: 5.0.51
--- PHP Version: 5.2.6
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
--- 
--- Database: `phpdb`
--- 
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `categorias`
 CREATE TABLE `categorias` (
   `cod_categoria` int(10) unsigned NOT NULL auto_increment,
   `descripcion` varchar(50) NOT NULL default '',
