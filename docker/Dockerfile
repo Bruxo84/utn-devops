@@ -11,3 +11,13 @@ RUN apt-get update && apt-get install -y libmcrypt-dev \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
     && docker-php-ext-install mcrypt pdo_mysql zip 
+
+VOLUME ["/var/www/utn-devops-app/myapp","/var/www/html"]
+
+COPY ./configs/php/php.ini /usr/local/etc/php/php.ini
+COPY ./configs/httpd/devops.site.conf /etc/apache2/sites-available/000-default.conf
+COPY ./configs/app/config_app.sh /tmp/config_app.sh
+
+#CMD ["sh","/tmp/config_app.sh"]
+
+EXPOSE 8081
