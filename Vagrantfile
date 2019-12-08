@@ -85,14 +85,14 @@ Vagrant.configure("2") do |config|
   # Además de usarlo como ejemplo para distinguir dos maneras de aprovisionamiento el archivo contiene
   # una definición del firewall de Ubuntu para permitir el tráfico de red que se redirecciona internamente, configuración
   # necesaria para Docker. Luego será copiado al lugar correcto por el script Vagrant.bootstrap.sh
-  config.vm.provision "file", source: "hostConfigs/ufw", destination: "/tmp/utw"
-  config.vm.provision "file", source: "hostConfigs/etc_hosts.txt", destination: "/tmp/etc_hosts.txt"
+
   # Archivos de Puppet
   config.vm.provision "file", source: "hostConfigs/puppet/site.pp", destination: "/tmp/site.pp"
   config.vm.provision "file", source: "hostConfigs/puppet/init.pp", destination: "/tmp/init.pp"
   config.vm.provision "file", source: "hostConfigs/puppet/init_jenkins.pp", destination: "/tmp/init_jenkins.pp"
   config.vm.provision "file", source: "hostConfigs/puppet/puppet-master.conf", destination: "/tmp/puppet-master.conf"
   config.vm.provision "file", source: "hostConfigs/puppet/.env", destination: "/tmp/env"
+
   # Archivo para Jenkins
   config.vm.provision "file", source: "hostConfigs/jenkins/default_jenkins", destination: "/tmp/jenkins_default"
   config.vm.provision "file", source: "hostConfigs/jenkins/init_d", destination: "/tmp/jenkins_init_d"
