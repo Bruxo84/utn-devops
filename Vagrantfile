@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   # configuración del nombre de maquina
   config.vm.hostname = "utn-devops.localhost"
   config.vm.provider "virtualbox" do |v|
-	v.name = "utn-devops-vagrant-ubuntu"
+	v.name = "utn-devops-vagrant-ububruxo"
   end
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
